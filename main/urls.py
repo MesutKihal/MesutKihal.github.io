@@ -1,0 +1,12 @@
+from django.urls import path
+from . import views
+from django.conf.urls.static import static
+from django.conf import settings
+
+urlpatterns = [
+    path('', views.index, name="index"),
+    
+    # API routes
+    path('content/<str:level>/<int:year>/<str:field>', views.content, name="content"),
+    path('news/', views.news, name="news"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

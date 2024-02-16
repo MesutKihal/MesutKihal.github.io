@@ -1,0 +1,104 @@
+from django.db import models
+import datetime
+
+class Level(models.Model):
+    name = models.CharField(max_length=64)
+    code = models.CharField(max_length=8)
+    
+    def __str__(self):
+        return self.name
+        
+class Year(models.Model):
+    name = models.CharField(max_length=64)
+    code = models.CharField(max_length=8)
+    
+    def __str__(self):
+        return self.name
+        
+class Branch(models.Model):
+    name = models.CharField(max_length=64)
+    code = models.CharField(max_length=8)
+    
+    class Meta:
+        verbose_name_plural = "Branches"
+    def __str__(self):
+        return self.name
+
+
+class Field(models.Model):
+    name = models.CharField(max_length=64)
+    code = models.CharField(max_length=8)
+    
+    def __str__(self):
+        return self.name
+
+class Book(models.Model):
+    title = models.CharField(max_length=64)
+    level = models.ForeignKey(Level, on_delete=models.CASCADE)
+    year = models.ForeignKey(Year, on_delete=models.CASCADE)
+    field = models.ForeignKey(Field, on_delete=models.CASCADE)
+    branch = models.ForeignKey(Branch, on_delete=models.SET_NULL, blank=True, null=True)
+    cover = models.ImageField(upload_to="main/media/img")
+    file = models.FileField(upload_to="main/media/files")
+    
+    def __str__(self):
+        return self.title
+
+class Exercice(models.Model):
+    title = models.CharField(max_length=64)
+    book = models.CharField(max_length=64)
+    cover = models.ImageField(upload_to="main/media/img")
+    page = models.IntegerField(default=1)
+    number = models.IntegerField(default=1)
+    level = models.ForeignKey(Level, on_delete=models.CASCADE)
+    year = models.ForeignKey(Year, on_delete=models.CASCADE)
+    field = models.ForeignKey(Field, on_delete=models.CASCADE)
+    branch = models.ForeignKey(Branch, on_delete=models.SET_NULL, blank=True, null=True)
+    
+    def __str__(self):
+        return self.title
+
+class ExerImg(models.Model):
+    exercice_obj = models.ForeignKey(Exercice, on_delete=models.CASCADE)
+    img = models.ImageField(upload_to="main/media/img")
+    isContent = models.BooleanField(default=True)
+    isSolution = models.BooleanField(default=False)
+    
+    class Meta:
+        verbose_name_plural = "Exercice Images"
+    def __str__(self):
+        return self.img.name
+    
+class ExamPaper(models.Model):
+    title = models.CharField(max_length=64)
+    level = models.ForeignKey(Level, on_delete=models.CASCADE)
+    year = models.ForeignKey(Year, on_delete=models.CASCADE)
+    field = models.ForeignKey(Field, on_delete=models.CASCADE)
+    branch = models.ForeignKey(Branch, on_delete=models.SET_NULL, blank=True, null=True)
+    
+    def __str__(self):
+        return self.title
+        
+        
+class ExamImg(models.Model):
+    exam_obj = models.ForeignKey(ExamPaper, on_delete=models.CASCADE)
+    img = models.ImageField(upload_to="main/media/img")
+    isContent = models.BooleanField(default=True)
+    isSolution = models.BooleanField(default=False)
+    
+    class Meta:
+        verbose_name_plural = "Exam Images"
+    def __str__(self):
+        return self.img.name
+        
+        
+class News(models.Model):
+    title = models.CharField(max_length=128)
+    link = models.CharField(max_length=255)
+    pubDate = models.DateField(default=datetime.date(1900,1,1))
+    
+    class Meta:
+        verbose_name_plural = "News"
+        
+    def __str__(self):
+        return self.title
