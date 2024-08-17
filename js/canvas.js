@@ -1,39 +1,14 @@
 
 const body = document.querySelector("body");
 const canvas = document.getElementById("canvas");
-const switchBtn = document.querySelector("#checkboxInput");
 const modeLbl = document.querySelector("#modeLbl");
 const panel = document.getElementById("panel");
 const p = document.querySelectorAll("p");
 const headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
-
 canvas.width = innerWidth;
 canvas.height = document.body.scrollHeight;
 
 context = canvas.getContext("2d");
-switchBtn.onchange = (event) => {
-	if (switchBtn.checked) {
-		body.classList.add("darkMode");
-		panel.classList.add("darkMode");
-		p.forEach(el => {
-			el.classList.add("textDM");
-		})
-		headers.forEach(el => {
-			el.classList.add("textDM");
-		})
-		modeLbl.innerText = "Dark Mode";
-	} else {
-		body.classList.remove("darkMode");
-		panel.classList.remove("darkMode");
-		p.forEach(el => {
-			el.classList.remove("textDM");
-		})
-		headers.forEach(el => {
-			el.classList.remove("textDM");
-		})
-		modeLbl.innerText = "Light Mode";
-	}
-}
 
 
 function Circle(x, y, r, velx, vely, color)
@@ -49,17 +24,10 @@ function Circle(x, y, r, velx, vely, color)
 	this.draw = function(){
 		context.beginPath();
 		context.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-		if (switchBtn.checked) {
-			context.strokeStyle = "white";
-			context.shadowColor = "white";
-			context.fillStyle = "white";
-			
-		} else {
-			context.strokeStyle = this.color;
-			context.shadowColor = this.color;
-			context.fillStyle = this.color;
-		}
-		context.shadowBlur = this.glow;
+		context.strokeStyle = this.color;
+		context.shadowColor = this.color;
+		context.fillStyle = this.color;
+		// context.shadowBlur = this.glow;
 		context.fill();
 	}
 	this.update = function(){
@@ -96,18 +64,11 @@ function Traingle(x, y, w, h, vel,color)
 		context.lineTo(this.x - (this.w / 2), this.y + this.h);
 		context.closePath();
 		context.lineWidth = 10;
-		if (switchBtn.checked) {
-			context.strokeStyle = "white";
-			context.shadowColor = "white";
-			context.fillStyle = "white";
-			
-		} else {
-			context.strokeStyle = this.color;
-			context.shadowColor = this.color;
-			context.fillStyle = this.color;
-		}
+		context.strokeStyle = this.color;
+		context.shadowColor = this.color;
+		context.fillStyle = this.color;
 		context.fill();
-		context.shadowBlur = this.glow;
+		// context.shadowBlur = this.glow;
 		context.stroke();
 		
 	}
@@ -142,15 +103,9 @@ function Square(x, y, w, h, dx, dy, color)
 	this.glow = 20;
 	
 	this.draw = function () {
-		if (switchBtn.checked) {
-			context.fillStyle = "white";
-			context.shadowColor = "white";
-			
-		} else {
-			context.fillStyle = this.color;
-			context.shadowColor = this.color;
-		}
-		context.shadowBlur = this.glow;
+		context.fillStyle = this.color;
+		context.shadowColor = this.color;
+		// context.shadowBlur = this.glow;
 		context.fillRect(this.x, this.y, this.w, this.h);
 	}
 	this.update = function () {
@@ -216,7 +171,7 @@ for (var i=0; i < 30; i++)
 {
 	var x = Math.random() * (canvas.width - 80) + 80;
 	var y = Math.random() * (canvas.height - 80) + 80;
-	var r = 30;
+	var r = 10;
 
 	var velx = Math.random() < 0.5 ? -1 : 1;
 	var vely = Math.random() < 0.5 ? -1 : 1;
@@ -231,7 +186,7 @@ function animate()
 	
 	var j = 520;
 	var k = j;
-	var n = 10;
+	var n = 12;
 	var delta = j / n;
 	var end = j / delta;
 	for (var i = 0; i < end; i++)
@@ -241,14 +196,9 @@ function animate()
 		context.lineTo((i+1)*delta, (i+1)*delta);
 		context.lineWidth = 5;
 		index = Math.floor(Math.random() * choices.length);
-		if (switchBtn.checked) {
-			context.strokeStyle = "white";
-			context.shadowColor = "white";
-		} else {
-			context.strokeStyle = choices[index];
-			context.shadowColor = choices[index];
-		}
-		context.shadowBlur = 10;
+		context.strokeStyle = "#fde" //choices[index];
+		context.shadowColor = "#fde" //choices[index];
+		// context.shadowBlur = 10;
 		context.stroke();
 		context.closePath();
 		j += delta*2;
@@ -259,5 +209,6 @@ function animate()
 	{
 		arcArray[i].update();
 	}
+	
 }
 animate();
