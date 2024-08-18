@@ -5,7 +5,7 @@ const modeLbl = document.querySelector("#modeLbl");
 const panel = document.getElementById("panel");
 const p = document.querySelectorAll("p");
 const headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
-canvas.width = innerWidth;
+canvas.width = document.body.clientWidth;
 canvas.height = document.body.scrollHeight;
 
 context = canvas.getContext("2d");

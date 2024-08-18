@@ -9,7 +9,7 @@
 		<script defer src="js/script.js"></script>
 	</head>
 	<body>
-		<header id="panel">
+		<section id="panel">
 			<div>
 				<h2>Messaoud KIHAL</h2>
 				<h4>Web Developer</h4>
@@ -31,12 +31,54 @@
 				<button><i class="fa-solid fa-envelope"></i></button>
 			</div>
 			<canvas id="canvas"></canvas>
-		</header>
+		</section>
 		<section id="section1">
-			<h2>Summary</h2>
+			<h2>From simple designs</h2>
 		</section>
 		<section id="section2">
-			<h2>Projects</h2>
+			<h2>to more complex ones</h2>
+		</section>
+		<section id="section3">
+			<h2>Interactive Layouts</h2>
+		</section>
+		<section id="section4">
+			<h2>Canvas Animations</h2>
+		</section>
+		<section id="section5">
+			<h3 height="30vh">Backend and Database developement</h3>
+			<div class="columns">
+				<div class="isHalf bg-green">
+					<h4>Django</h4>
+					<img src="img/python-logo.png" class="logoImg"/>
+					<div class="code">
+						<p>views.py</p>
+						<span style="color: orange;">from </span><span>django.shortcuts </span><span style="color: orange;">import </span><span>render</span>
+						<br></br>
+						<span style="color: orange;">def </span><span style="color: blue;">index</span><span>(request):</span>
+						<br>
+						<span style="color: orange;margin-left: 20px;">return </span><span>render(request, "app/index.html")</span>
+					</div>
+				</div>
+				<div class="isHalf bg-blue">
+					<h4>PostgreSQL</h4>
+					<img src="img/postgre.png" class="logoImg"/>
+					<div class="code">
+						<span style="color: blue;">CREATE </span><span>TABLE </span><span style="color: blue;">IF NOT EXISTS </span><span>customer (</span>
+						<br>
+						<span style="margin-left: 20px;">id SERIAL </span><span style="color: blue;">PRIMARY </span><span>KEY,</span>
+						<br>
+						<span style="margin-left: 20px;">name </span><span>TEXT </span><span style="color: blue;"> NOT NULL,</span>
+						<br>
+						<span style="margin-left: 20px;">phone </span><span>TEXT </span><span style="color: blue;">DEFAULT </span><span style="color: red;">'oxx xxx xxxx'</span>
+						<br>
+						<span>);</span>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="section6">
+			<h2>and finally deployment</h2>
+			<img src="img/railway.png" width="500vw"/>
 		</section>
 		<!-- <section id="section3"> -->
 			<!-- <h2>Education</h2> -->
