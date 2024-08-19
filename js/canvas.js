@@ -5,7 +5,8 @@ const modeLbl = document.querySelector("#modeLbl");
 const panel = document.getElementById("panel");
 const p = document.querySelectorAll("p");
 const headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
-canvas.width = document.body.clientWidth;
+const section = document.querySelector("#section4");
+canvas.width = section.clientWidth;
 canvas.height = document.body.scrollHeight;
 
 context = canvas.getContext("2d");
@@ -171,7 +172,7 @@ for (var i=0; i < 30; i++)
 {
 	var x = Math.random() * (canvas.width - 80) + 80;
 	var y = Math.random() * (canvas.height - 80) + 80;
-	var r = 10;
+	var r = 30;
 
 	var velx = Math.random() < 0.5 ? -1 : 1;
 	var vely = Math.random() < 0.5 ? -1 : 1;
@@ -209,6 +210,13 @@ function animate()
 	{
 		arcArray[i].update();
 	}
-	
+	for (var i=0; i < tranArray.length; i++)
+	{
+		tranArray[i].update();
+	}
+	for (var i=0; i < rectArray.length; i++)
+	{
+		rectArray[i].update();
+	}
 }
 animate();
