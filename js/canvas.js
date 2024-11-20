@@ -1,13 +1,12 @@
 
 const body = document.querySelector("body");
 const canvas = document.getElementById("canvas");
-const modeLbl = document.querySelector("#modeLbl");
 const panel = document.getElementById("panel");
 const p = document.querySelectorAll("p");
 const headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
-const section = document.querySelector("#section4");
+const section = document.querySelector("#panel");
 canvas.width = section.clientWidth;
-canvas.height = document.body.scrollHeight;
+canvas.height = section.scrollHeight;
 
 context = canvas.getContext("2d");
 
@@ -106,7 +105,6 @@ function Square(x, y, w, h, dx, dy, color)
 	this.draw = function () {
 		context.fillStyle = this.color;
 		context.shadowColor = this.color;
-		// context.shadowBlur = this.glow;
 		context.fillRect(this.x, this.y, this.w, this.h);
 	}
 	this.update = function () {
@@ -118,9 +116,10 @@ function Square(x, y, w, h, dx, dy, color)
 		{
 			this.dy = -this.dy;
 		}
+		
 		document.onmousemove = (event) => {
-			var x = event.clientX //* 100 / window.innerWidth;
-			var y = event.clientY //* 100 / window.innerHeight;
+			var x = event.clientX
+			var y = event.clientY
 			if (this.x + this.w > x && this.x < x)
 			{
 				this.dx = -this.dx
@@ -198,14 +197,15 @@ function animate()
 		context.lineWidth = 5;
 		index = Math.floor(Math.random() * choices.length);
 		context.strokeStyle = "#fde" //choices[index];
-		context.shadowColor = "#fde" //choices[index];
+		context.shadowColor = "#000" //choices[index];
 		// context.shadowBlur = 10;
 		context.stroke();
 		context.closePath();
 		j += delta*2;
 		k -= delta;
 	}
-	
+
+	// Update shapes coordinates
 	for (var i=0; i < arcArray.length; i++)
 	{
 		arcArray[i].update();
