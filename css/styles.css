@@ -117,8 +117,6 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 15px;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	margin: 5px;
-	animation: float-up linear;
-	animation-timeline: view();
 }
 
 section {
