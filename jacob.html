@@ -87,25 +87,25 @@
 			</div>
 			<h1>Featured Products</h1>
 			<div class="row">
-				<div class="card">
+				<div name="product" class="prod"  data-title="Box" data-price="1200" data-img="assets/001.jpg">
 					<img src="assets/001.jpg"></img>
 					<p>Box</p>
 					<p>★★★★★</p>
 					<p>1200.00DZD</p>
 				</div>
-				<div class="card">
+				<div name="product" class="prod" data-title="Clock" data-price="1600" data-img="https://onesixeightlondon.com.au/cdn/shop/files/22150.alt_3.jpg?v=1704908012&width=1589">
 					<img src="https://onesixeightlondon.com.au/cdn/shop/files/22150.alt_3.jpg?v=1704908012&width=1589"></img>
 					<p>Clock</p>
 					<p>★★★★★</p>
 					<p>1600.00DZD</p>
 				</div>
-				<div class="card">
+				<div name="product" class="prod" data-title="Wallet" data-price="800" data-img="https://www.lambland.co.uk/wp-content/uploads/2022/08/ktxyauzvawa-scaled.jpg">
 					<img src="https://www.lambland.co.uk/wp-content/uploads/2022/08/ktxyauzvawa-scaled.jpg"></img>
 					<p>Wallet</p>
 					<p>★★★★★</p>
 					<p>800.00DZD</p>
 				</div>
-				<div class="card">
+				<div name="product" class="prod" data-title="Ring" data-price="6800" data-img="https://pvdvintagejewelry.com/cdn/shop/products/il_fullxfull.2023135860_cxc1__29910.jpg?v=1692119065&width=1946">
 					<img src="https://pvdvintagejewelry.com/cdn/shop/products/il_fullxfull.2023135860_cxc1__29910.jpg?v=1692119065&width=1946"></img>
 					<p>Ring</p>
 					<p>★★★★★</p>
@@ -115,6 +115,50 @@
 		</main>
 		<footer>
 		</footer>
-		<script src="assets/index.js"></script>
+		<script>
+			let main = document.querySelector('main')
+			let products = document.getElementsByName('product')
+			products.forEach(prod => {
+				prod.onclick = (event) => {
+					main.innerText = ''
+					let card = document.createElement('div')
+					card.classList.add('card')
+					let cardTitle = document.createElement('span')
+					cardTitle.innerText = prod.dataset.title
+					cardTitle.classList.add('card__title')
+					let cardForm = document.createElement('div')
+					cardForm.classList.add('card__form')
+					let cardContent = document.createElement('img')
+					cardContent.classList.add('card__img')
+					cardContent.src = prod.dataset.img
+					
+					let input1 = document.createElement('input')
+					input1.setAttribute('placeholder', 'الإسم الكامل')
+					let input2 = document.createElement('input')
+					input2.setAttribute('placeholder', 'رقم الهاتف')
+					let input3 = document.createElement('input')
+					input3.setAttribute('placeholder', 'الولاية')
+					let input4 = document.createElement('input')
+					input4.setAttribute('placeholder', 'البلدية')
+					let input5 = document.createElement('input')
+					input5.setAttribute('placeholder', 'العنوان')
+					
+					let btn = document.createElement('button')
+					btn.innerText = "إشتري"
+					
+					card.appendChild(cardTitle)
+					card.appendChild(cardContent)
+					cardForm.appendChild(input1)
+					cardForm.appendChild(input2)
+					cardForm.appendChild(input3)
+					cardForm.appendChild(input4)
+					cardForm.appendChild(input5)
+					cardForm.appendChild(btn)
+					card.appendChild(cardForm)
+					
+					main.appendChild(card)
+				}
+			})
+		</script>
 	</body>
 </html>

@@ -3,6 +3,8 @@
 body {
 	margin: 0;
 	font-family: Helvetica;
+	background-color: #1A1A1D;
+	color: white;
 }
 
 header {
@@ -83,7 +85,15 @@ main {
 	flex-direction: row;
 }
 
-.card {
+.row:nth-child(odd) {
+	animation: bounce 1s linear;
+}
+
+.row:nth-child(even) {
+	animation: bounce 1.2s linear;
+}
+
+.prod {
 	display: flex;
 	flex-direction: column;
 	height: 56vh;
@@ -93,17 +103,17 @@ main {
 	
 }
 
-.card:hover {
+.prod:hover {
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.card > img {
+.prod > img {
 	height: 70%;
 	width: 100%;
 	border-radius: 20px;
 }
 
-.card > p {
+.prod > p {
 	margin-top: 5px;
 	font-weight: bold;
 	font-size: 16px;
@@ -127,4 +137,99 @@ main {
 
 .wrapper:hover {
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+@keyframes bounce {
+	0% {
+		transform: translateX(-30px);
+		opacity: 0.5;
+	}
+	60% {
+		transform: translateX(0px);
+		opacity: 1;
+	}
+	70%{
+		transform: translateX(10px);
+	}
+	80% {
+		transform: translateX(0px);
+	}
+	90% {
+		transform: translateX(5px);
+	}
+	100% {
+		transform: translateX(0px);
+	}
+}
+
+/* From Uiverse.io by satyamchaudharydev */ 
+.card {
+  width: 60%;
+  height: auto;
+  margin: 50px;
+  padding: 0 15px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  background: #fff;
+  border-radius: 20px;
+}
+
+.card > * {
+  margin: 0;
+}
+
+.card__title {
+  font-size: 23px;
+  font-weight: 900;
+  color: #333;
+}
+
+.card__content {
+  font-size: 13px;
+  line-height: 18px;
+  color: #333;
+}
+
+.card__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.card__form input {
+  margin-top: 10px;
+  width: 80%;
+  outline: 0;
+  background: rgb(255, 255, 255);
+  box-shadow: transparent 0px 0px 0px 1px inset;
+  padding: 0.6em;
+  border-radius: 14px;
+  border: 1px solid #333;
+  color: black;
+}
+
+.card__form button {
+  border: 0;
+  background: #111;
+  color: #fff;
+  margin: 50px;
+  width: 25%;
+  padding: 0.68em;
+  border-radius: 14px;
+  font-weight: bold;
+}
+
+.card__form button:hover {
+  opacity: 0.8;
+} 
+
+
+.card__img {
+	width: 60%;
+	border-radius: 10px;
 }
