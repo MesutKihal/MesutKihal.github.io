@@ -1,14 +1,24 @@
 
-const body = document.querySelector("body");
-const canvas = document.getElementById("canvas");
-const panel = document.getElementById("panel");
-const p = document.querySelectorAll("p");
-const headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
-const section = document.querySelector("#panel");
-canvas.width = section.clientWidth;
-canvas.height = section.scrollHeight;
+
+const section = document.querySelector("#aboutme");
+
+function resizeCanvas() {
+	canvas.width = section.clientWidth;
+	canvas.height = section.clientHeight;
+}
 
 context = canvas.getContext("2d");
+
+window.addEventListener("resize", () => {
+	 	resizeCanvas();
+		animate();
+		drawShapes();
+		if (window.innerWidth < 600) {
+			context.rotate(-90 * Math.PI / 180);
+		}
+});
+resizeCanvas();
+
 
 
 function Circle(x, y, r, velx, vely, color)
@@ -20,7 +30,7 @@ function Circle(x, y, r, velx, vely, color)
 	this.vely = vely;
 	this.color = color;
 	this.glow = 20;
-	
+
 	this.draw = function(){
 		context.beginPath();
 		context.arc(this.x, this.y, this.r, 0, Math.PI * 2);
@@ -39,7 +49,7 @@ function Circle(x, y, r, velx, vely, color)
 		{
 			this.vely = -this.vely;
 		}
-		
+
 		this.x += this.velx;
 		this.y += this.vely;
 		this.draw();
@@ -55,8 +65,8 @@ function Traingle(x, y, w, h, vel,color)
 	this.vel = vel;
 	this.color = color;
 	this.glow = 10;
-	
-	
+
+
 	this.draw = function () {
 		context.beginPath();
 		context.moveTo(this.x, this.y);
@@ -70,9 +80,9 @@ function Traingle(x, y, w, h, vel,color)
 		context.fill();
 		// context.shadowBlur = this.glow;
 		context.stroke();
-		
+
 	}
-	
+
 	this.update = function () {
 		if (this.x + (this.w / 2) >= canvas.width || this.x - (this.w / 2) <= 0)
 		{
@@ -82,7 +92,7 @@ function Traingle(x, y, w, h, vel,color)
 		{
 			this.vel = -this.vel
 		}
-		
+
 		this.x += this.vel;
 		this.y += this.vel;
 		this.draw();
@@ -101,7 +111,7 @@ function Square(x, y, w, h, dx, dy, color)
 	this.dy = dy;
 	this.color = color;
 	this.glow = 20;
-	
+
 	this.draw = function () {
 		context.fillStyle = this.color;
 		context.shadowColor = this.color;
@@ -116,7 +126,7 @@ function Square(x, y, w, h, dx, dy, color)
 		{
 			this.dy = -this.dy;
 		}
-		
+
 		document.onmousemove = (event) => {
 			var x = event.clientX
 			var y = event.clientY
@@ -125,7 +135,7 @@ function Square(x, y, w, h, dx, dy, color)
 				this.dx = -this.dx
 			}
 		}
-		
+
 		this.x += this.dx;
 		this.y += this.dy;
 		this.draw();
@@ -137,54 +147,55 @@ function Square(x, y, w, h, dx, dy, color)
 
 let choices = ["#e6e6fa", "#ffc0cb", "#b0e0e6", "#c6e2ff", "#faebd7", "#fff68f"];
 var index = Math.floor(Math.random() * choices.length);
-
 const rectArray = [];
-
-for (var i=0; i < 20; i++)
-{
-	var x = Math.random() * (canvas.width - 50) + 50;
-	var y = Math.random() * (screen.height - 50) + 50;
-	var w = Math.floor(Math.random() * 50) + 30;
-	var h = Math.floor(Math.random() * 50) + 30;
-	var dx = Math.random() < 0.5 ? -1 : 1;
-	var dy = Math.random() < 0.5 ? -1 : 1;
-	index = Math.floor(Math.random() * choices.length);
-	rectArray.push(new Square(x, y, w, h, dx, dy, choices[index]));
-}
-
 const tranArray = [];
-
-for (var i=0; i < 20; i++)
-{
-	var x = Math.random() * (canvas.width - 80) + 80;
-	var y = Math.random() * (screen.height - 80) + 80;
-	var w = Math.floor(Math.random() * 80) + 30;
-	var h = Math.floor(Math.random() * 80) + 30;
-	var vel = Math.random() < 0.5 ? -1 : 1;
-	index = Math.floor(Math.random() * choices.length);
-	tranArray.push(new Traingle(x, y, w, h, vel,choices[index]));
-}
-
 const arcArray = [];
 
-for (var i=0; i < 30; i++)
+function drawShapes()
 {
-	var x = Math.random() * (canvas.width - 80) + 80;
-	var y = Math.random() * (canvas.height - 80) + 80;
-	var r = 30;
 
-	var velx = Math.random() < 0.5 ? -1 : 1;
-	var vely = Math.random() < 0.5 ? -1 : 1;
-	index = Math.floor(Math.random() * choices.length);
-	arcArray.push(new Circle(x, y, r, velx, vely, choices[index]));
+	for (var i=0; i < 20; i++)
+	{
+		var x = Math.random() * (canvas.width - 50) + 50;
+		var y = Math.random() * (canvas.height - 50) + 50;
+		var w = Math.floor(Math.random() * 50) + 30;
+		var h = Math.floor(Math.random() * 50) + 30;
+		var dx = Math.random() < 0.5 ? -1 : 1;
+		var dy = Math.random() < 0.5 ? -1 : 1;
+		index = Math.floor(Math.random() * choices.length);
+		rectArray.push(new Square(x, y, w, h, dx, dy, choices[index]));
+	}
+
+	for (var i=0; i < 20; i++)
+	{
+		var x = Math.random() * (canvas.width - 80) + 80;
+		var y = Math.random() * (canvas.height - 80) + 80;
+		var w = Math.floor(Math.random() * 40) + 10;
+		var h = Math.floor(Math.random() * 40) + 10;
+		var vel = Math.random() < 0.5 ? -1 : 1;
+		index = Math.floor(Math.random() * choices.length);
+		tranArray.push(new Traingle(x, y, w, h, vel,choices[index]));
+	}
+
+	for (var i=0; i < 30; i++)
+	{
+		var x = Math.random() * (canvas.width - 80) + 80;
+		var y = Math.random() * (canvas.height - 80) + 80;
+		var r = 20;
+
+		var velx = Math.random() < 0.5 ? -1 : 1;
+		var vely = Math.random() < 0.5 ? -1 : 1;
+		index = Math.floor(Math.random() * choices.length);
+		arcArray.push(new Circle(x, y, r, velx, vely, choices[index]));
+	}
 }
-
+drawShapes();
 function animate()
 {
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	requestAnimationFrame(animate);
-	
-	var j = 520;
+
+	var j = screen.width / 2;
 	var k = j;
 	var n = 12;
 	var delta = j / n;
@@ -219,4 +230,5 @@ function animate()
 		rectArray[i].update();
 	}
 }
+
 animate();
