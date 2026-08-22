@@ -1,191 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content />
-        <meta name="author" content />
-        <title>Messaoud Kihal</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Custom Google font-->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-    </head>
-    <body class="d-flex flex-column">
-        <main class="flex-shrink-0">
-            <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
-                <div class="container px-5">
-                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-gradient-b">Messaoud Kihal</span></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
-                            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <!-- Page content-->
-            <section class="py-5">
-                <div class="container px-5">
-                    <!-- Contact form-->
-                    <div class="bg-light rounded-4 py-5 px-4 px-md-5">
-                        <div class="text-center mb-5">
-                            <div class="feature bg-primary bg-gradient-b text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
-                            <h1 class="fw-bolder">Get in touch</h1>
-                            <p class="lead fw-normal text-muted mb-0">Let's work together!</p>
-                        </div>
-                        <div class="row gx-5 justify-content-center">
-                            <div class="col-lg-8 col-xl-6">
-                                <div id="contactForm">
-                                    <!-- Name input-->
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." required/>
-                                        <label for="name">Full name</label>
-                                    </div>
-                                    <!-- Email address input-->
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="email" type="email" placeholder="name@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
-                                        <label for="email">Email address</label>
-                                    </div>
-                                    <!-- Phone number input-->
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" required/>
-                                        <label for="phone">Phone number</label>
-                                    </div>
-                                    <!-- Message input-->
-                                    <div class="form-floating mb-3">
-                                        <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Get in touch with Messaoud Kihal — Web Developer, IT Technician, and Educator. Let's collaborate on your next project." />
+  <title>Messaoud Kihal | Contact</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    :root { --gradient-start: #4facfe; --gradient-end: #00f2fe; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; overflow-x: hidden; }
+    .text-gradient { background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); -webkit-background-clip: text; background-clip: text; color: transparent !important; font-weight: 700; }
+    .bg-gradient-primary { background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); }
+    .btn-gradient { background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); border: none; color: white; transition: transform 0.2s, box-shadow 0.2s; border-radius: 50px; }
+    .btn-gradient:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3); color: white; }
+    .btn-outline-glass { background: transparent; border: 1.5px solid rgba(79, 172, 254, 0.5); color: #1e293b; border-radius: 50px; transition: all 0.2s; }
+    .btn-outline-glass:hover { background: rgba(79, 172, 254, 0.1); transform: translateY(-2px); }
+    .navbar-glass { background: rgba(255, 255, 255, 0.92) !important; backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+    .nav-link { font-weight: 600; color: #1e293b !important; transition: 0.2s; }
+    .nav-link:hover { background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+    .badge-pill-glow { background: rgba(79,172,254,0.12); backdrop-filter: blur(4px); border-radius: 100px; padding: 0.4rem 1.2rem; font-weight: 600; }
+    .contact-card { background: white; border-radius: 2rem; transition: all 0.3s ease; border: none; }
+    .contact-input { border-radius: 1.2rem !important; border: 1px solid #e2e8f0; padding: 0.85rem 1.2rem; transition: all 0.2s; }
+    .contact-input:focus { box-shadow: 0 0 0 3px rgba(79,172,254,0.2); border-color: var(--gradient-start); outline: none; }
+    .info-icon-card { background: #f8fafc; border-radius: 1.2rem; padding: 1rem; transition: 0.2s; }
+    .info-icon-card:hover { background: white; box-shadow: 0 8px 20px rgba(0,0,0,0.05); transform: translateY(-3px); }
+    .blob-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; }
+    .blob { position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(79,172,254,0.12) 0%, rgba(0,242,254,0.04) 100%); border-radius: 50%; filter: blur(70px); animation: moveBlob 20s infinite alternate; }
+    @keyframes moveBlob { 0% { transform: translate(0%, 0%) scale(1);} 100% { transform: translate(10%, 15%) scale(1.2);} }
+    .blob:nth-child(1) { top: -150px; left: -100px; }
+    .blob:nth-child(2) { bottom: -100px; right: -80px; width: 600px; background: radial-gradient(circle, rgba(0,242,254,0.08), transparent); animation-duration: 28s; }
+    footer a { text-decoration: none; transition: 0.2s; }
+    footer a:hover { color: var(--gradient-start) !important; }
+    .social-icon { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; background: #f1f5f9; border-radius: 30px; transition: all 0.2s; color: #1e293b; font-size: 1.3rem; }
+    .social-icon:hover { background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); color: white; transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+<div class="blob-bg"><div class="blob"></div><div class="blob"></div></div>
 
-                                    <div type="submit" class="d-none" id="submitSuccessMessage">
-                                        <div class="text-center mb-3">
-                                            <div class="fw-bolder" id="response-message"></div>
-                                        </div>
-                                    </div>
-                                    <div class="d-grid"><button class="btn btn-primary bg-gradient-b btn-lg" id="submitButton" onclick="sendMessage()">Submit</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        <footer class="py-4 text-center">
-          <p class="text-muted small">
-              © 2026 Mesut Kihal |
-              <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#legalModal">
-                  Privacy & Terms
-              </a>
-          </p>
-        </footer>
-        <div class="modal fade" id="legalModal" tabindex="-1" aria-labelledby="legalModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="legalModalLabel">Privacy & Terms</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body shadow-sm">
-                  <section class="mb-3">
-                    <h6 class="fw-bold">Privacy Policy</h6>
-                    <p class="small text-gradient-b">
-                      This site is hosted by <strong>GitHub Pages</strong>. I do not collect, store, or track your personal data. GitHub may collect technical logs for security. Any information sent via email is used strictly for communication.
-                    </p>
-                  </section>
-                  <hr>
-                  <section class="mb-3">
-                    <h6 class="fw-bold">Terms of Service</h6>
-                    <p class="small text-gradient-b">
-                      All content and code on this site are my intellectual property unless stated otherwise. Everything is provided "as-is" without warranty. I am not liable for any issues arising from the use of this site or its code samples.
-                    </p>
-                  </section>
-                  <div class="text-center mt-2">
-                    <span class="badge bg-light text-dark border">Last Updated: Jan 2026</span>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">I Understand</button>
-                </div>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-glass py-3">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand fw-bolder fs-3" href="index.html"><span class="text-gradient">Messaoud Kihal</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder gap-2">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+        <li class="nav-item"><a class="nav-link active text-gradient" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link active" href="bac.html">BAC</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="flex-shrink-0 mt-5 pt-5">
+  <section class="py-4 py-md-5">
+    <div class="container px-4 px-lg-5">
+      <!-- Header -->
+      <div class="text-center mb-5" data-aos="fade-down">
+        <span class="badge-pill-glow text-primary"><i class="bi bi-envelope-paper me-1"></i> Get in Touch</span>
+        <h1 class="display-5 fw-bolder mt-3"><span class="text-gradient">Let's Connect</span></h1>
+        <p class="lead text-muted">Have a project in mind or just want to say hello? I'll respond within 24 hours.</p>
+      </div>
+
+      <div class="row g-5 justify-content-center">
+        <!-- Contact Form Column -->
+        <div class="col-lg-7" data-aos="fade-right" data-aos-duration="700">
+          <div class="contact-card card shadow-lg p-4 p-md-5">
+            <h3 class="fw-bolder mb-4"><i class="bi bi-chat-dots-fill me-2 text-gradient"></i> Send a Message</h3>
+            <div id="contactFormWrapper">
+              <div class="form-floating mb-4">
+                <input class="form-control contact-input" id="fullname" type="text" placeholder="Your name" required>
+                <label for="fullname"><i class="bi bi-person me-1"></i> Full name *</label>
               </div>
+              <div class="form-floating mb-4">
+                <input class="form-control contact-input" id="emailContact" type="email" placeholder="name@example.com" required>
+                <label for="emailContact"><i class="bi bi-envelope me-1"></i> Email address *</label>
+              </div>
+              <div class="form-floating mb-4">
+                <input class="form-control contact-input" id="phoneContact" type="tel" placeholder="Phone number">
+                <label for="phoneContact"><i class="bi bi-phone me-1"></i> Phone number</label>
+              </div>
+              <div class="form-floating mb-4">
+                <textarea class="form-control contact-input" id="msgContact" style="height: 140px" placeholder="Your message"></textarea>
+                <label for="msgContact"><i class="bi bi-pencil me-1"></i> Message *</label>
+              </div>
+              <div class="d-grid">
+                <button class="btn btn-gradient btn-lg py-3 fw-bold" id="contactSubmitBtn">
+                  <i class="bi bi-send me-2"></i>Send Message
+                </button>
+              </div>
+              <div id="formAlertPlaceholder" class="mt-4"></div>
             </div>
           </div>
+        </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            const nameInput = document.getElementById("name");
-            const emailInput = document.getElementById("email");
-            const phoneInput = document.getElementById("phone");
-            const messageInput = document.getElementById("message");
-            const formContainer = document.getElementById("contactForm");
-            const submitButton = document.getElementById("submitButton");
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        <!-- Contact Info & Social Column -->
+        <div class="col-lg-5" data-aos="fade-left" data-aos-duration="700" data-aos-delay="100">
+          <div class="contact-card card shadow-sm p-4 p-md-5 h-100">
+            <h3 class="fw-bolder mb-4"><i class="bi bi-info-circle me-2 text-gradient"></i> Connect directly</h3>
+            
+            <div class="info-icon-card d-flex align-items-center gap-3 mb-4">
+              <div class="bg-gradient-primary rounded-circle p-3 text-white" style="width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;">
+                <i class="bi bi-envelope-fill fs-5"></i>
+              </div>
+              <div>
+                <div class="small text-muted text-uppercase">Email</div>
+                <a href="mailto:messaoud.kihal@example.com" class="text-decoration-none fw-semibold">messaoud.kihal@example.com</a>
+              </div>
+            </div>
 
-            // Check Email Validity
-            emailInput.addEventListener('blur', () => {
-              if (!emailPattern.test(emailInput.value)) {
-                emailInput.setAttribute("class", "form-control is-invalid");
-              } else {
-                emailInput.setAttribute("class", "form-control");
-              }
-            });
+            <div class="info-icon-card d-flex align-items-center gap-3 mb-4">
+              <div class="bg-gradient-primary rounded-circle p-3 text-white" style="width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;">
+                <i class="bi bi-geo-alt-fill fs-5"></i>
+              </div>
+              <div>
+                <div class="small text-muted text-uppercase">Location</div>
+                <div class="fw-semibold">Zighoud Youcef, Constantine, Algeria</div>
+              </div>
+            </div>
 
-            async function sendMessage() {
-                const url = "https://mbm41-messages.fly.dev/send/";
+            <div class="info-icon-card d-flex align-items-center gap-3 mb-4">
+              <div class="bg-gradient-primary rounded-circle p-3 text-white" style="width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;">
+                <i class="bi bi-clock-fill fs-5"></i>
+              </div>
+              <div>
+                <div class="small text-muted text-uppercase">Response time</div>
+                <div class="fw-semibold">&gt; 24 hours (usually faster)</div>
+              </div>
+            </div>
 
-                let alertDiv = document.createElement("div");
-                alertDiv.classList.add("alert");
+            <hr class="my-4">
+            <h5 class="fw-bold mb-3"><i class="bi bi-share me-2"></i>Find me on</h5>
+            <div class="d-flex gap-3 justify-content-start">
+              <a href="https://github.com/MesutKihal" target="_blank" class="social-icon"><i class="bi bi-github"></i></a>
+              <a href="https://linkedin.com/in/messaoud-kihal-75a349228" target="_blank" class="social-icon"><i class="bi bi-linkedin"></i></a>
+              <a href="https://www.tiktok.com/@marknuth7" target="_blank" class="social-icon"><i class="bi bi-tiktok"></i></a>
+              <a href="#" class="social-icon" target="_blank"><i class="bi bi-twitter-x"></i></a>
+            </div>
 
-                const payload = {
-                    FULL_NAME: nameInput.value,
-                    EMAIL: emailInput.value,
-                    PHONE_NUMBER: phoneInput.value,
-                    MESSAGE: messageInput.value,
-                };
+            <div class="mt-4 bg-light rounded-4 p-3 text-center">
+              <i class="bi bi-star-fill text-warning"></i>
+              <p class="small text-muted mt-2 mb-0">Open for freelance work, collaborations, and educational opportunities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <!-- Extra note -->
+      <div class="text-center mt-5" data-aos="fade-up">
+        <p class="text-muted small"><i class="bi bi-shield-check me-1"></i> Your information is safe — I never share data with third parties.</p>
+      </div>
+    </div>
+  </section>
+</main>
 
-                nameInput.disabled = true;
-                emailInput.disabled = true;
-                phoneInput.disabled = true;
-                messageInput.disabled = true;
-                messageInput.disabled = true;
-                submitButton.disabled = true;
-                alertDiv.innerText = "Sending .....";
-                alertDiv.classList.add("alert-warning");
+<footer class="py-4 text-center mt-3">
+  <p class="text-muted small mb-0">© 2026 Messaoud Kihal | <a href="#" class="footer-link text-dark" data-bs-toggle="modal" data-bs-target="#legalModal">Privacy & Terms</a></p>
+</footer>
 
-                try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(payload)
-                    });
-                    const data = await response.json();
-                    alertDiv.innerText = "Message was sent successfully";
-                    alertDiv.classList.remove("alert-warning");
-                    alertDiv.classList.add("alert-success");
-                    formContainer.prepend(alertDiv);
-                } catch (error) {
-                    alertDiv.innerText = "Error sending message reload the page or try again later";
-                    alertDiv.classList.remove("alert-warning");
-                    alertDiv.classList.add("alert-danger");
-                    formContainer.prepend(alertDiv);
-                }
+<!-- Modal -->
+<div class="modal fade" id="legalModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold">Privacy & Terms</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <h6 class="fw-bold">Privacy Policy</h6>
+        <p class="small text-muted">This site is hosted by GitHub Pages. I do not collect, store, or track your personal data. GitHub may collect technical logs for security. Any information sent via email is used strictly for communication.</p>
+        <hr>
+        <h6 class="fw-bold">Terms of Service</h6>
+        <p class="small text-muted">All content and code on this site are my intellectual property unless stated otherwise. Everything is provided "as-is" without warranty. I am not liable for any issues arising from the use of this site or its code samples.</p>
+        <div class="text-center mt-2"><span class="badge bg-light border">Last Updated: Jan 2026</span></div>
+      </div>
+      <div class="modal-footer border-0">
+        <button class="btn btn-gradient btn-sm px-4" data-bs-dismiss="modal">I Understand</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-              }
-        </script>
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ once: true, offset: 20, duration: 700 });
+
+  // Contact form submission handler (same endpoint)
+  const contactBtn = document.getElementById("contactSubmitBtn");
+  const alertBox = document.getElementById("formAlertPlaceholder");
+
+  async function sendModernMessage() {
+    const name = document.getElementById("fullname").value.trim();
+    const email = document.getElementById("emailContact").value.trim();
+    const phone = document.getElementById("phoneContact").value.trim();
+    const message = document.getElementById("msgContact").value.trim();
+
+    if (!name || !email || !message) {
+      alertBox.innerHTML = `<div class="alert alert-warning rounded-4 d-flex align-items-center" role="alert"><i class="bi bi-exclamation-triangle-fill me-2"></i> Please fill in all required fields (name, email, message).</div>`;
+      return;
+    }
+    const emailPattern = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+    if (!emailPattern.test(email)) {
+      alertBox.innerHTML = `<div class="alert alert-danger rounded-4"><i class="bi bi-envelope-exclamation me-2"></i> Enter a valid email address.</div>`;
+      return;
+    }
+
+    contactBtn.disabled = true;
+    contactBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Sending...`;
+    alertBox.innerHTML = `<div class="alert alert-info rounded-4"><i class="bi bi-hourglass-split me-2"></i> Sending your message...</div>`;
+
+    try {
+      const response = await fetch("https://mbm41-messages.fly.dev/send/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          FULL_NAME: name,
+          EMAIL: email,
+          PHONE_NUMBER: phone,
+          MESSAGE: message
+        })
+      });
+      if (response.ok) {
+        alertBox.innerHTML = `<div class="alert alert-success rounded-4"><i class="bi bi-check-circle-fill me-2"></i> ✅ Message sent successfully! I'll get back to you soon.</div>`;
+        // Clear form
+        document.getElementById("fullname").value = "";
+        document.getElementById("emailContact").value = "";
+        document.getElementById("phoneContact").value = "";
+        document.getElementById("msgContact").value = "";
+      } else {
+        throw new Error("Server responded with error");
+      }
+    } catch (err) {
+      alertBox.innerHTML = `<div class="alert alert-danger rounded-4"><i class="bi bi-bug-fill me-2"></i> Error sending message. Please reload or try again later.</div>`;
+    } finally {
+      contactBtn.disabled = false;
+      contactBtn.innerHTML = `<i class="bi bi-send me-2"></i>Send Message`;
+      setTimeout(() => {
+        if (alertBox.firstChild) alertBox.innerHTML = "";
+      }, 6000);
+    }
+  }
+
+  if (contactBtn) contactBtn.addEventListener("click", sendModernMessage);
+</script>
+</body>
 </html>

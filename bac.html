@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="BAC preparation hub — register for classes, view active sessions, and download PDF handouts. Messaoud Kihal." />
+  <title>Messaoud Kihal | BAC</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    /* ===== SAME STYLING AS OTHER PAGES ===== */
+    :root { 
+      --gradient-start: #4facfe; 
+      --gradient-end: #00f2fe;
+      --uk-red: #C8102E;
+      --uk-white: #FFFFFF;
+      --uk-blue: #012169;
+    }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; overflow-x: hidden; }
+    .text-gradient { background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); -webkit-background-clip: text; background-clip: text; color: transparent !important; font-weight: 700; }
+    .bg-gradient-primary { background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); }
+    
+    /* British Flag inspired buttons */
+    .btn-uk-primary { background: var(--uk-blue); border: none; color: white; transition: all 0.2s; border-radius: 50px; padding: 0.7rem 2rem; font-weight: 600; }
+    .btn-uk-primary:hover { background: #0a1f5a; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(1, 33, 105, 0.3); color: white; }
+    .btn-uk-red { background: var(--uk-red); border: none; color: white; transition: all 0.2s; border-radius: 50px; padding: 0.7rem 2rem; font-weight: 600; }
+    .btn-uk-red:hover { background: #a00d24; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(200, 16, 46, 0.3); color: white; }
+    .btn-uk-outline { background: transparent; border: 2px solid var(--uk-blue); color: var(--uk-blue); border-radius: 50px; transition: all 0.2s; font-weight: 600; }
+    .btn-uk-outline:hover { background: var(--uk-blue); color: white; transform: translateY(-2px); }
+    
+    .badge-uk-blue { background: var(--uk-blue); color: white; border-radius: 100px; padding: 0.4rem 1.2rem; font-weight: 600; }
+    .badge-uk-red { background: var(--uk-red); color: white; border-radius: 100px; padding: 0.4rem 1.2rem; font-weight: 600; }
+    
+    .navbar-glass { background: rgba(255, 255, 255, 0.92) !important; backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+    .nav-link { font-weight: 600; color: #1e293b !important; transition: 0.2s; }
+    .nav-link:hover { background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+    .nav-link.active { background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+    .badge-pill-glow { background: rgba(79,172,254,0.12); backdrop-filter: blur(4px); border-radius: 100px; padding: 0.4rem 1.2rem; font-weight: 600; }
+    .card-modern { background: white; border-radius: 2rem; transition: all 0.3s ease; border: none; }
+    .card-modern:hover { transform: translateY(-6px); box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08); }
+    .contact-input { border-radius: 1.2rem !important; border: 1px solid #e2e8f0; padding: 0.85rem 1.2rem; transition: all 0.2s; }
+    .contact-input:focus { box-shadow: 0 0 0 3px rgba(79,172,254,0.2); border-color: var(--gradient-start); outline: none; }
+    .contact-input.error { border-color: var(--uk-red); box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.15); }
+    .contact-input.success { border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15); }
+    .blob-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; }
+    .blob { position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(79,172,254,0.12) 0%, rgba(0,242,254,0.04) 100%); border-radius: 50%; filter: blur(70px); animation: moveBlob 20s infinite alternate; }
+    @keyframes moveBlob { 0% { transform: translate(0%, 0%) scale(1);} 100% { transform: translate(10%, 15%) scale(1.2);} }
+    .blob:nth-child(1) { top: -150px; left: -100px; }
+    .blob:nth-child(2) { bottom: -100px; right: -80px; width: 600px; background: radial-gradient(circle, rgba(0,242,254,0.08), transparent); animation-duration: 28s; }
+    footer a { text-decoration: none; transition: 0.2s; }
+    footer a:hover { color: var(--gradient-start) !important; }
+    .class-item { border-left: 4px solid var(--uk-red); background: #f8fafc; border-radius: 1.2rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; transition: 0.2s; }
+    .class-item:hover { background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+    .class-item .uk-flag-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; }
+    .class-item .uk-flag-dot.blue { background: var(--uk-blue); }
+    .class-item .uk-flag-dot.red { background: var(--uk-red); }
+    .handout-item { background: #f8fafc; border-radius: 1.2rem; padding: 1rem 1.5rem; transition: 0.2s; border: 1px solid transparent; }
+    .handout-item:hover { background: white; border-color: var(--uk-red); transform: translateX(4px); }
+    .badge-status { background: rgba(79,172,254,0.12); color: #1e293b; border-radius: 100px; padding: 0.25rem 1rem; font-weight: 600; font-size: 0.75rem; }
+    .badge-status.full { background: rgba(239,68,68,0.1); color: #dc2626; }
+    .badge-status.new { background: rgba(34,197,94,0.1); color: #16a34a; }
+    .section-divider { width: 60px; height: 4px; background: linear-gradient(90deg, var(--uk-red), var(--uk-blue)); border-radius: 4px; margin: 0.5rem 0 1.5rem; }
+    .bg-soft-blue { background: rgba(79,172,254,0.04); }
+    
+    /* UK Flag header decoration */
+    .uk-flag-stripes { 
+      display: flex; 
+      gap: 4px; 
+      justify-content: center; 
+      margin-bottom: 1rem;
+    }
+    .uk-flag-stripes span {
+      display: inline-block;
+      width: 40px;
+      height: 6px;
+      border-radius: 4px;
+    }
+    .uk-flag-stripes span:nth-child(1) { background: var(--uk-blue); }
+    .uk-flag-stripes span:nth-child(2) { background: var(--uk-white); border: 1px solid #ddd; }
+    .uk-flag-stripes span:nth-child(3) { background: var(--uk-red); }
+    .uk-flag-stripes span:nth-child(4) { background: var(--uk-white); border: 1px solid #ddd; }
+    .uk-flag-stripes span:nth-child(5) { background: var(--uk-blue); }
+    
+    /* Loading spinner */
+    .spinner-uk { width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; display: inline-block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    
+    /* Captcha styling */
+    .captcha-box { 
+      background: #f1f5f9; 
+      border-radius: 1rem; 
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .captcha-box .captcha-text {
+      font-family: 'Courier New', monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      background: white;
+      padding: 0.25rem 1rem;
+      border-radius: 0.5rem;
+      border: 2px dashed var(--uk-blue);
+      color: var(--uk-blue);
+      user-select: none;
+    }
+    .error-text { color: var(--uk-red); font-size: 0.8rem; margin-top: 0.25rem; display: none; }
+    .error-text.show { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="blob-bg"><div class="blob"></div><div class="blob"></div></div>
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-glass py-3">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand fw-bolder fs-3" href="index.html"><span class="text-gradient">Messaoud Kihal</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder gap-2">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link active" href="bac.html">BAC</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="flex-shrink-0 mt-5 pt-5">
+  <section class="py-4 py-md-5">
+    <div class="container px-4 px-lg-5">
+
+      <!-- Header with UK Flag colors -->
+      <div class="text-center mb-5" data-aos="fade-down">
+        <div class="uk-flag-stripes">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <span class="badge-uk-red"><i class="bi bi-mortarboard-fill me-1"></i> BAC Preparation 2026</span>
+        <h1 class="display-5 fw-bolder mt-3">
+          <span style="color: var(--uk-blue);">Your</span> 
+          <span class="text-gradient">BAC Prep</span> 
+          <span style="color: var(--uk-red);">Course</span>
+        </h1>
+        <p class="lead text-muted">Register for classes, check active sessions, and download PDF handouts — all in one place.</p>
+      </div>
+
+      <div class="row g-5">
+
+        <!-- LEFT COLUMN: Registration + Active Classes -->
+        <div class="col-lg-7" data-aos="fade-right" data-aos-duration="700">
+
+          <!-- Registration Card -->
+          <div class="card-modern card shadow-sm p-4 p-md-5 mb-4">
+            <h3 class="fw-bolder mb-2">
+              <span style="color: var(--uk-blue);"><i class="bi bi-person-plus-fill me-2"></i></span>
+              <span class="text-gradient">Register for Class</span>
+            </h3>
+            <div class="section-divider"></div>
+            <p class="text-muted small">Secure your spot in my BAC preparation classes. I'll confirm via email within 24 hours.</p>
+            <div id="regAlert" class="mt-2"></div>
+            
+            <form id="bacRegisterForm" novalidate>
+              <!-- CSRF Token (will be set by Django) -->
+              <input type="hidden" id="csrfToken" value="">
+              
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input class="form-control contact-input" id="regName" type="text" placeholder="Full name" required minlength="2" maxlength="100" pattern="^[a-zA-Z\u0600-\u06FF\s'-]+$">
+                    <label for="regName"><i class="bi bi-person me-1"></i> Full name *</label>
+                    <div class="error-text" id="nameError">Please enter a valid name (letters, spaces, hyphens, apostrophes only).</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input class="form-control contact-input" id="regEmail" type="email" placeholder="name@example.com" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                    <label for="regEmail"><i class="bi bi-envelope me-1"></i> Email *</label>
+                    <div class="error-text" id="emailError">Please enter a valid email address.</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input class="form-control contact-input" id="regPhone" type="tel" placeholder="+213 555 123456" pattern="^(\+?213|0)(5|6|7)[0-9]{8}$">
+                    <label for="regPhone"><i class="bi bi-phone me-1"></i> Phone (optional)</label>
+                    <div class="error-text" id="phoneError">Please enter a valid Algerian phone number.</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <select class="form-select contact-input" id="regStream" required style="padding-top: 1.2rem;">
+                      <option value="">Select...</option>
+                      <option value="Maths">Maths</option>
+                      <option value="Science">Science</option>
+                      <option value="Foreign Languages">Foreign Languages</option>
+                      <option value="Literature">Literature</option>
+                      <option value="Management">Management</option>
+                    </select>
+                    <label><i class="bi bi-book me-1"></i> BAC Stream *</label>
+                    <div class="error-text" id="streamError">Please select a BAC stream.</div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating">
+                    <select class="form-select contact-input" id="regClass" required style="padding-top: 1.2rem;">
+                      <option value="">Select...</option>
+                      <option value="Group A (Mon/Wed 17:00)">Group A (Mon/Wed 17:00)</option>
+                      <option value="Group B (Tue/Thu 18:30)">Group B (Tue/Thu 18:30)</option>
+                      <option value="Weekend Intensive (Sat 10:00)">Weekend Intensive (Sat 10:00)</option>
+                    </select>
+                    <label><i class="bi bi-calendar me-1"></i> Preferred Class *</label>
+                    <div class="error-text" id="classError">Please select a class.</div>
+                  </div>
+                </div>
+                
+                <!-- CAPTCHA -->
+                <div class="col-12">
+                  <div class="captcha-box">
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                      <span class="fw-semibold small" style="color: var(--uk-blue);">Verify:</span>
+                      <span class="captcha-text" id="captchaDisplay">A7B3X</span>
+                      <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" id="refreshCaptcha" title="Refresh CAPTCHA">
+                        <i class="bi bi-arrow-clockwise"></i>
+                      </button>
+                    </div>
+                    <div class="flex-grow-1">
+                      <input type="text" class="form-control contact-input" id="captchaInput" placeholder="Enter code above" required style="min-width: 120px;">
+                      <div class="error-text" id="captchaError">CAPTCHA does not match.</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-12">
+                  <button type="submit" class="btn btn-uk-primary w-100 py-3 fw-bold rounded-pill" id="submitBtn">
+                    <i class="bi bi-send me-2"></i>Register Now
+                  </button>
+                </div>
+                
+                <div class="col-12">
+                  <p class="text-muted small mb-0 text-center">
+                    <i class="bi bi-shield-lock me-1" style="color: var(--uk-blue);"></i> 
+                    Your data is encrypted and secure.
+                    <span class="badge-uk-red ms-2" style="font-size: 0.6rem;">SSL Protected</span>
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Active Classes (dynamically loaded) -->
+          <div class="card-modern card shadow-sm p-4 p-md-5">
+            <h4 class="fw-bolder">
+              <span style="color: var(--uk-red);"><i class="bi bi-calendar-event me-2"></i></span>
+              <span class="text-gradient">Active Classes</span>
+              <span class="badge-uk-blue ms-2" id="classCount">0</span>
+            </h4>
+            <div class="section-divider"></div>
+            <div id="classesContainer">
+              <div class="text-center py-3" id="classesLoading">
+                <div class="spinner-uk"></div>
+                <p class="text-muted small mt-2">Loading classes...</p>
+              </div>
+            </div>
+            <p class="text-muted small mt-3 mb-0"><i class="bi bi-info-circle me-1"></i> Classes held online (Zoom) & in-person (Constantine).</p>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Handouts (dynamically loaded) -->
+        <div class="col-lg-5" data-aos="fade-left" data-aos-duration="700" data-aos-delay="100">
+          <div class="card-modern card shadow-sm p-4 p-md-5 h-100">
+            <h4 class="fw-bolder">
+              <span style="color: var(--uk-red);"><i class="bi bi-file-earmark-pdf me-2"></i></span>
+              <span class="text-gradient">PDF Handouts</span>
+              <span class="badge-uk-blue ms-2" id="handoutCount">0</span>
+            </h4>
+            <div class="section-divider"></div>
+            <p class="text-muted small">Download course materials, summary sheets, and practice exercises.</p>
+            <div id="handoutsContainer">
+              <div class="text-center py-3" id="handoutsLoading">
+                <div class="spinner-uk"></div>
+                <p class="text-muted small mt-2">Loading handouts...</p>
+              </div>
+            </div>
+            <hr class="my-4">
+            <div class="bg-soft-blue rounded-4 p-3 text-center">
+              <i class="bi bi-star-fill text-gradient"></i>
+              <p class="small text-muted mt-1 mb-0">New handouts added weekly. All materials free for registered students.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Calendar / schedule note -->
+      <div class="row mt-5" data-aos="fade-up">
+        <div class="col-12">
+          <div class="card-modern card shadow-sm p-4 p-md-5">
+            <div class="row g-4 align-items-center">
+              <div class="col-md-8">
+                <h5 class="fw-bold">
+                  <i class="bi bi-clock-history me-2" style="color: var(--uk-blue);"></i>
+                  <span class="text-gradient">Course Calendar 2026</span>
+                </h5>
+                <p class="text-muted small mb-0">Classes run from <strong>February – May 2026</strong>. Intensive revision sessions in April. Registered students receive a detailed timetable via email.</p>
+              </div>
+              <div class="col-md-4 text-md-end">
+                <span class="badge-pill-glow text-primary"><i class="bi bi-calendar-check me-1"></i> 12 weeks</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="py-4 text-center mt-3">
+  <p class="text-muted small mb-0">
+    © 2026 Messaoud Kihal | 
+    <a href="#" class="text-dark" data-bs-toggle="modal" data-bs-target="#legalModal">Privacy & Terms</a> | 
+    <span style="color: var(--uk-red);">🇬🇧</span>
+  </p>
+</footer>
+
+<!-- Modal -->
+<div class="modal fade" id="legalModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold">Privacy & Terms</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <h6 class="fw-bold">Privacy Policy</h6>
+        <p class="small text-muted">This site is hosted by GitHub Pages. I do not collect or store your personal data. GitHub may collect technical logs. Any information you provide via registration is used solely for class communication.</p>
+        <hr>
+        <h6 class="fw-bold">Terms of Service</h6>
+        <p class="small text-muted">All content and materials are for educational purposes. Provided "as-is" without warranty.</p>
+        <div class="text-center mt-2"><span class="badge bg-light border">Last Updated: Jan 2026</span></div>
+      </div>
+      <div class="modal-footer border-0">
+        <button class="btn btn-gradient btn-sm px-4" data-bs-dismiss="modal">I Understand</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ once: true, offset: 20, duration: 700 });
+
+  // ============================================================
+  //  CONFIGURATION
+  // ============================================================
+  const API_BASE_URL = 'https://your-django-api.onrender.com/api'; // CHANGE THIS
+  // For local development: 'http://localhost:8000/api'
+
+  // ============================================================
+  //  CAPTCHA
+  // ============================================================
+  let currentCaptcha = '';
+
+  function generateCaptcha() {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = '';
+    for (let i = 0; i < 5; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    currentCaptcha = result;
+    document.getElementById('captchaDisplay').textContent = result;
+    document.getElementById('captchaInput').value = '';
+    document.getElementById('captchaInput').classList.remove('error', 'success');
+    document.getElementById('captchaError').classList.remove('show');
+  }
+
+  document.getElementById('refreshCaptcha').addEventListener('click', generateCaptcha);
+  generateCaptcha();
+
+  // ============================================================
+  //  FETCH COURSES, HANDOUTS FROM API
+  // ============================================================
+  async function fetchCourses() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/courses/`);
+      if (!response.ok) throw new Error('Failed to fetch courses');
+      const courses = await response.json();
+      renderCourses(courses);
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+      document.getElementById('classesContainer').innerHTML = `
+        <div class="alert alert-danger rounded-4">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+          Failed to load classes. Please refresh the page.
+        </div>
+      `;
+    }
+  }
+
+  async function fetchHandouts() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/handouts/`);
+      if (!response.ok) throw new Error('Failed to fetch handouts');
+      const handouts = await response.json();
+      renderHandouts(handouts);
+    } catch (error) {
+      console.error('Error fetching handouts:', error);
+      document.getElementById('handoutsContainer').innerHTML = `
+        <div class="alert alert-danger rounded-4">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+          Failed to load handouts. Please refresh the page.
+        </div>
+      `;
+    }
+  }
+
+  function renderCourses(courses) {
+    const container = document.getElementById('classesContainer');
+    const countBadge = document.getElementById('classCount');
+    countBadge.textContent = courses.length;
+
+    if (courses.length === 0) {
+      container.innerHTML = `<p class="text-muted text-center py-3">No active classes at the moment.</p>`;
+      return;
+    }
+
+    container.innerHTML = courses.map(course => `
+      <div class="class-item d-flex justify-content-between align-items-center flex-wrap">
+        <div>
+          <span class="fw-bold">${course.name}</span>
+          <span class="badge-status ${course.status === 'full' ? 'full' : course.status === 'new' ? 'new' : ''} ms-2">
+            ${course.status || 'open'}
+          </span>
+          <br>
+          <small class="text-muted">${course.schedule || 'TBD'}</small>
+        </div>
+        <span class="badge-pill-glow text-primary">
+          ${course.spots_left !== undefined ? course.spots_left + ' spots left' : (course.status === 'full' ? 'Waitlist' : 'Available')}
+        </span>
+      </div>
+    `).join('');
+  }
+
+  function renderHandouts(handouts) {
+    const container = document.getElementById('handoutsContainer');
+    const countBadge = document.getElementById('handoutCount');
+    countBadge.textContent = handouts.length;
+
+    if (handouts.length === 0) {
+      container.innerHTML = `<p class="text-muted text-center py-3">No handouts available yet.</p>`;
+      return;
+    }
+
+    container.innerHTML = handouts.map(handout => `
+      <div class="handout-item d-flex align-items-center gap-3 mb-3">
+        <div class="bg-gradient-primary rounded-circle p-2 text-white" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;">
+          <i class="bi bi-file-pdf fs-5"></i>
+        </div>
+        <div class="flex-grow-1">
+          <strong>${handout.title}</strong>
+          <div class="text-muted small">updated ${handout.updated_at || 'recent'} · ${handout.file_size || 'N/A'}</div>
+        </div>
+        <a href="${handout.file_url || '#'}" class="btn btn-sm btn-uk-outline rounded-pill px-3" download>
+          <i class="bi bi-download"></i>
+        </a>
+      </div>
+    `).join('');
+  }
+
+  // ============================================================
+  //  FORM VALIDATION & SUBMISSION
+  // ============================================================
+  const form = document.getElementById('bacRegisterForm');
+  const submitBtn = document.getElementById('submitBtn');
+
+  // Real-time validation
+  function validateField(input, errorId, validator) {
+    const errorEl = document.getElementById(errorId);
+    const isValid = validator(input.value);
+    if (input.value.length > 0 && !isValid) {
+      input.classList.add('error');
+      input.classList.remove('success');
+      errorEl.classList.add('show');
+      return false;
+    } else if (input.value.length > 0 && isValid) {
+      input.classList.remove('error');
+      input.classList.add('success');
+      errorEl.classList.remove('show');
+      return true;
+    } else {
+      input.classList.remove('error', 'success');
+      errorEl.classList.remove('show');
+      return true;
+    }
+  }
+
+  document.getElementById('regName').addEventListener('input', function() {
+    validateField(this, 'nameError', v => /^[a-zA-Z\u0600-\u06FF\s'-]{2,100}$/.test(v));
+  });
+
+  document.getElementById('regEmail').addEventListener('input', function() {
+    validateField(this, 'emailError', v => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(v));
+  });
+
+  document.getElementById('regPhone').addEventListener('input', function() {
+    if (this.value.length === 0) {
+      this.classList.remove('error', 'success');
+      document.getElementById('phoneError').classList.remove('show');
+      return;
+    }
+    validateField(this, 'phoneError', v => /^(\+?213|0)(5|6|7)[0-9]{8}$/.test(v));
+  });
+
+  document.getElementById('regStream').addEventListener('change', function() {
+    const errorEl = document.getElementById('streamError');
+    if (this.value === '') {
+      this.classList.add('error');
+      errorEl.classList.add('show');
+    } else {
+      this.classList.remove('error');
+      errorEl.classList.remove('show');
+    }
+  });
+
+  document.getElementById('regClass').addEventListener('change', function() {
+    const errorEl = document.getElementById('classError');
+    if (this.value === '') {
+      this.classList.add('error');
+      errorEl.classList.add('show');
+    } else {
+      this.classList.remove('error');
+      errorEl.classList.remove('show');
+    }
+  });
+
+  // Form submission
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const alertDiv = document.getElementById('regAlert');
+    alertDiv.innerHTML = '';
+
+    // Collect and validate all fields
+    const name = document.getElementById('regName').value.trim();
+    const email = document.getElementById('regEmail').value.trim();
+    const phone = document.getElementById('regPhone').value.trim();
+    const stream = document.getElementById('regStream').value;
+    const classPref = document.getElementById('regClass').value;
+    const captchaInput = document.getElementById('captchaInput').value.trim();
+
+    // Validate name
+    if (!/^[a-zA-Z\u0600-\u06FF\s'-]{2,100}$/.test(name)) {
+      document.getElementById('nameError').classList.add('show');
+      document.getElementById('regName').classList.add('error');
+      alertDiv.innerHTML = `<div class="alert alert-danger rounded-4"><i class="bi bi-exclamation-triangle-fill me-2"></i> Please enter a valid name.</div>`;
+      return;
+    }
+
+    // Validate email
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+      document.getElementById('emailError').classList.add('show');
+      document.getElementById('regEmail').classList.add('error');
+      alertDiv.innerHTML = `<div class="alert alert-danger rounded-4"><i class="bi bi-exclamation-triangle-fill me-2"></i> Please enter a valid email address.</div>`;
+      return;
+    }
+
+    // Validate phone (optional but if provided, must be valid)
+    if (phone.length > 0 && !/^(\+?213|0)(5|6|7)[0-9]{8}$/.test(phone)) {
+      document.getElementById('phoneError').classList.add('show');
+      document.getElementById('regPhone').classList.add('error');
+      alertDiv.innerHTML = `<div class="alert alert-danger rounded-4"><i class="bi bi-exclamation-triangle-fill me-2"></i> Please enter a valid Algerian phone number.</div>`;
+      return;
+    }
+
+    // Validate stream
+    if (!stream) {
+      document.getElementById('streamError').classList.add('show');
+      document.getElementById('regStream').classList.add('error');
+      alertDiv.innerHTML = `<div class="alert alert-danger rounded-4"><i class="bi bi-exclamation-triangle-fill me-2"></i> Please select a BAC stream.</div>`;
+      return;
+    }
+
+    // Validate class
+    if (!classPref) {
+      document.getElementById('classError').classList.add('show');
+      document.getElementById('regClass').classList.add('error');
+      alertDiv.innerHTML = `<div class="alert alert-danger rounded-4"><i class="bi bi-exclamation-triangle-fill me-2"></i> Please select a class.</div>`;
+      return;
+    }
+
+    // Validate CAPTCHA
+    if (captchaInput.toUpperCase() !== currentCaptcha) {
+      document.getElementById('captchaError').classList.add('show');
+      document.getElementById('captchaInput').classList.add('error');
+      alertDiv.innerHTML = `<div class="alert alert-danger rounded-4"><i class="bi bi-exclamation-triangle-fill me-2"></i> CAPTCHA does not match. Please try again.</div>`;
+      generateCaptcha();
+      return;
+    }
+
+    // Disable button and show loading
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<span class="spinner-uk me-2"></span> Submitting...`;
+
+    // Prepare data for API (sanitized)
+    const payload = {
+      full_name: name.replace(/[^a-zA-Z\u0600-\u06FF\s'-]/g, ''), // Sanitize
+      email: email.toLowerCase().trim(),
+      phone: phone || '',
+      stream: stream,
+      preferred_class: classPref
+    };
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/register/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': document.getElementById('csrfToken').value || ''
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alertDiv.innerHTML = `
+          <div class="alert alert-success rounded-4">
+            <i class="bi bi-check-circle-fill me-2"></i> 
+            ✅ Registration successful! Check your email for confirmation.
+          </div>
+        `;
+        form.reset();
+        generateCaptcha();
+        // Clear success states
+        document.querySelectorAll('.contact-input').forEach(el => el.classList.remove('success', 'error'));
+        // Refresh class spots
+        fetchCourses();
+      } else {
+        // Handle API validation errors
+        let errorMsg = 'Registration failed. Please try again.';
+        if (data.errors) {
+          errorMsg = Object.values(data.errors).flat().join(' ');
+        } else if (data.message) {
+          errorMsg = data.message;
+        }
+        alertDiv.innerHTML = `
+          <div class="alert alert-danger rounded-4">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i> 
+            ${errorMsg}
+          </div>
+        `;
+        generateCaptcha();
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alertDiv.innerHTML = `
+        <div class="alert alert-danger rounded-4">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i> 
+          Network error. Please check your connection and try again.
+        </div>
+      `;
+      generateCaptcha();
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `<i class="bi bi-send me-2"></i>Register Now`;
+    }
+  });
+
+  // ============================================================
+  //  INITIALIZE - Fetch data on page load
+  // ============================================================
+  fetchCourses();
+  fetchHandouts();
+
+  // Refresh data every 60 seconds (optional)
+  setInterval(() => {
+    fetchCourses();
+    fetchHandouts();
+  }, 60000);
+
+</script>
+</body>
+</html>
